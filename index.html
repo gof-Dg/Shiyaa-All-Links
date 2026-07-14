@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Link Page</title>
+<style>
+  :root {
+    --card: rgba(30, 27, 38, 0.6);
+    --accent: #e8734a;
+    --text: #f2eee8;
+    --muted: #cfc9d6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    padding: 48px 16px;
+
+    /* Background photo */
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  /* Dark overlay so text stays readable */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(rgba(10,8,14,0.55), rgba(10,8,14,0.8));
+    z-index: -1;
+  }
+  .page { width: 100%; max-width: 420px; text-align: center; }
+  h1 { font-size: 20px; margin: 0 0 4px; letter-spacing: 0.5px; }
+  .handle { color: var(--muted); font-size: 14px; margin-bottom: 8px; }
+  .bio { color: var(--muted); font-size: 13px; margin-bottom: 32px; line-height: 1.5; }
+  .links { display: flex; flex-direction: column; gap: 12px; }
+  a.link {
+    display: block;
+    background: var(--card);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--text);
+    text-decoration: none;
+    padding: 16px 20px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+  a.link:hover { transform: translateY(-2px); border-color: var(--accent); }
+  a.link.featured {
+    background: linear-gradient(135deg, var(--accent), #c2542f);
+    border: none;
+  }
+  footer { margin-top: 32px; font-size: 11px; color: var(--muted); }
+</style>
+</head>
+<body>
+  <div class="page">
+    <h1>Shiyaa</h1>
+    <div class="bio">Tap below to join</div>
+    <div class="links">
+      <a class="link featured" href="https://telegram.me/shiyaaoffic">📢 Main Channel</a>
+      <a class="link" href="https://telegram.me/shiyaaba">🔄 Backup Channel</a>
+    </div>
+    <footer>your-link.page</footer>
+  </div>
+</body>
+</html>
