@@ -4,69 +4,41 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shiyaa | Telegram</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --card: rgba(30, 27, 38, 0.55);
     --accent: #29a9eb;
     --accent2: #1e88c7;
     --text: #f5f2ee;
     --muted: #c9c3d1;
   }
   * { box-sizing: border-box; }
+  html, body { height: 100%; }
   body {
     margin: 0;
     min-height: 100vh;
-    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-family: 'Outfit', 'Segoe UI', system-ui, sans-serif;
     color: var(--text);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 48px 16px;
-
-    background-image: url('IMG_20260714_185428.png');
-    background-size: cover;
+    background-color: #0a0e1c;
+    background-image:
+      linear-gradient(180deg, rgba(8,10,20,0.6), rgba(6,8,20,0.9)),
+      radial-gradient(circle at 15% 20%, rgba(41,169,235,0.16), transparent 40%),
+      radial-gradient(circle at 85% 75%, rgba(126,87,235,0.14), transparent 40%),
+      repeating-linear-gradient(135deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 8px),
+      url('IMG_20260714_185428.png');
+    background-size: cover, cover, cover, 12px 12px, cover;
     background-position: center;
-    background-attachment: fixed;
   }
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(180deg, rgba(8,10,20,0.55), rgba(8,10,20,0.88));
-    z-index: -1;
-  }
-  body::after {
-    content: '';
-    position: fixed;
-    top: -50%; left: -50%; right: -50%; bottom: -50%;
-    background: radial-gradient(circle at 30% 20%, rgba(41,169,235,0.25), transparent 45%),
-                radial-gradient(circle at 70% 80%, rgba(126,87,235,0.22), transparent 45%);
-    z-index: -1;
-    animation: drift 14s ease-in-out infinite alternate;
-    pointer-events: none;
-  }
-  @keyframes drift {
-    0%   { transform: translate(0, 0) rotate(0deg); }
-    100% { transform: translate(4%, 3%) rotate(8deg); }
-  }
-  .bottom-fade {
-    position: fixed;
-    left: 0; right: 0; bottom: 0;
-    height: 40vh;
-    background:
-      repeating-linear-gradient(120deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 6px),
-      linear-gradient(180deg, transparent, rgba(6,10,28,0.55) 40%, rgba(4,8,24,0.92) 100%);
-    z-index: -1;
-    pointer-events: none;
-  }
-  .page { width: 100%; max-width: 420px; text-align: center; animation: fadeIn 0.6s ease; perspective: 800px; }
+  .page { width: 100%; max-width: 420px; text-align: center; animation: fadeIn 0.5s ease; }
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+    from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0px) rotateX(0deg); }
-    50% { transform: translateY(-8px) rotateX(4deg); }
   }
   .avatar {
     width: 100px;
@@ -77,11 +49,23 @@
     background-size: cover;
     background-position: center;
     border: 3px solid rgba(255,255,255,0.3);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 40px rgba(41,169,235,0.35);
-    animation: float 4.5s ease-in-out infinite;
-    transform-style: preserve-3d;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
   }
-  h1 { font-size: 23px; margin: 0 0 6px; letter-spacing: 0.4px; font-weight: 700; }
+  h1 {
+    font-family: 'Syne', 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    margin: 0 0 8px;
+    letter-spacing: 0.5px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff, #a9d8ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  h1 .badge { flex-shrink: 0; }
   .platform-tag {
     display: inline-flex;
     align-items: center;
@@ -101,41 +85,22 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02));
-    backdrop-filter: blur(24px) saturate(160%);
-    -webkit-backdrop-filter: blur(24px) saturate(160%);
-    border: 1px solid rgba(255,255,255,0.25);
-    border-top: 1px solid rgba(255,255,255,0.5);
+    background: rgba(30, 27, 38, 0.72);
+    border: 1px solid rgba(255,255,255,0.16);
     color: var(--text);
     text-decoration: none;
     padding: 16px 18px;
-    border-radius: 18px;
+    border-radius: 16px;
     font-size: 15px;
     font-weight: 500;
     text-align: left;
-    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
-    transform-style: preserve-3d;
+    transition: transform 0.12s ease, border-color 0.12s ease;
     overflow: hidden;
-    box-shadow:
-      inset 0 1px 1px rgba(255,255,255,0.35),
-      inset 0 -12px 20px -14px rgba(0,0,0,0.4),
-      0 6px 20px rgba(0,0,0,0.35);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   }
-  a.link::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 50%;
-    background: linear-gradient(180deg, rgba(255,255,255,0.14), transparent);
-    pointer-events: none;
-  }
-  a.link:hover, a.link:active {
-    transform: translateY(-3px) rotateX(4deg) scale(1.015);
+  a.link:active, a.link.pressed {
+    transform: scale(0.97);
     border-color: var(--accent);
-    box-shadow:
-      inset 0 1px 1px rgba(255,255,255,0.4),
-      inset 0 -12px 20px -14px rgba(0,0,0,0.4),
-      0 14px 28px rgba(41,169,235,0.4);
   }
   a.link .icon {
     width: 42px;
@@ -159,60 +124,74 @@
   }
   a.link .icon svg { width: 18px; height: 18px; fill: white; position: relative; z-index: 1; }
   a.link .label-group { display: flex; flex-direction: column; }
-  a.link .label-group .main-label { font-size: 15px; font-weight: 600; }
+  a.link .label-group .main-label { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; letter-spacing: 0.2px; }
   a.link .label-group .sub-label { font-size: 11px; color: var(--muted); margin-top: 1px; }
   a.link.featured {
-    background: linear-gradient(135deg, rgba(41,169,235,0.25), rgba(30,136,199,0.25));
+    background: rgba(41,169,235,0.22);
     border: 1px solid rgba(41,169,235,0.5);
   }
   footer { margin-top: 34px; font-size: 11px; color: var(--muted); letter-spacing: 0.3px; }
 
-  /* Ripple effect inside links */
+  /* Static decorative glass orbs for background depth (no animation = zero perf cost) */
+  .deco-drop {
+    position: fixed;
+    border-radius: 50%;
+    background: radial-gradient(circle at 32% 28%, rgba(255,255,255,0.25), rgba(160,215,255,0.08) 45%, rgba(80,140,220,0.02) 75%);
+    box-shadow:
+      inset -3px -4px 8px rgba(0,20,50,0.25),
+      inset 2px 3px 5px rgba(255,255,255,0.3),
+      0 4px 14px rgba(0,10,30,0.2);
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.55;
+  }
+  .deco-drop.d1 { width: 58px; height: 58px; top: 8%; left: 9%; }
+  .deco-drop.d2 { width: 30px; height: 30px; top: 16%; right: 11%; }
+  .deco-drop.d3 { width: 42px; height: 42px; bottom: 13%; left: 7%; }
+  .deco-drop.d4 { width: 24px; height: 24px; bottom: 20%; right: 13%; }
+
+  /* Ripple effect inside links — cheap: opacity + transform only */
   .ripple {
     position: absolute;
     border-radius: 50%;
-    background: rgba(255,255,255,0.45);
+    background: rgba(255,255,255,0.4);
     transform: scale(0);
-    animation: rippleAnim 0.6s ease-out;
+    animation: rippleAnim 0.5s ease-out;
     pointer-events: none;
   }
   @keyframes rippleAnim {
     to { transform: scale(3); opacity: 0; }
   }
 
-  /* Water drop effect anywhere on page */
+  /* Water drop effect — lightweight: transform + opacity only, no blur */
   .water-drop {
     position: fixed;
     width: 10px;
     height: 10px;
     border-radius: 50%;
     border: 1.5px solid rgba(140,200,255,0.55);
-    box-shadow: 0 0 0 1px rgba(140,200,255,0.12) inset;
     transform: translate(-50%, -50%) scale(0);
-    animation: dropAnim 1.8s cubic-bezier(0.15, 0.6, 0.35, 1) forwards;
+    animation: dropAnim 1.1s ease-out forwards;
     pointer-events: none;
     z-index: 999;
   }
-  .water-drop.ring2 {
-    animation-delay: 0.15s;
-    border-color: rgba(140,200,255,0.32);
-  }
   @keyframes dropAnim {
-    0%   { transform: translate(-50%, -50%) scale(0); opacity: 0.85; filter: blur(0px); }
-    35%  { opacity: 0.55; }
-    70%  { opacity: 0.22; filter: blur(0.5px); }
-    100% { transform: translate(-50%, -50%) scale(9); opacity: 0; filter: blur(1px); }
+    0%   { transform: translate(-50%, -50%) scale(0); opacity: 0.8; }
+    100% { transform: translate(-50%, -50%) scale(7); opacity: 0; }
   }
 </style>
 </head>
 <body>
-  <div class="bottom-fade"></div>
+  <div class="deco-drop d1"></div>
+  <div class="deco-drop d2"></div>
+  <div class="deco-drop d3"></div>
+  <div class="deco-drop d4"></div>
   <div class="page">
     <div class="avatar"></div>
-    <h1>Shiyaa</h1>
+    <h1>Shiyaa <svg class="badge" viewBox="0 0 24 24" width="20" height="20"><defs><linearGradient id="badgeGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#29a9eb"/><stop offset="50%" stop-color="#7e57eb"/><stop offset="100%" stop-color="#eb5757"/></linearGradient></defs><path fill="url(#badgeGrad)" d="M12 2l2.2 1.3 2.5-.5 1.2 2.3 2.3 1.2-.5 2.5L21 11l-1.3 2.2.5 2.5-2.3 1.2-1.2 2.3-2.5-.5L12 20l-2.2-1.3-2.5.5-1.2-2.3-2.3-1.2.5-2.5L3 11l1.3-2.2-.5-2.5 2.3-1.2 1.2-2.3 2.5.5L12 2z"/><path fill="white" d="M9.5 12.5l1.8 1.8 3.7-4.1-1-.9-2.8 3-.9-.9z"/></svg></h1>
     <div class="platform-tag">
-      <svg viewBox="0 0 24 24"><path fill="currentColor" d="M9.036 15.803l-.371 5.226c.531 0 .761-.229 1.037-.504l2.492-2.383 5.166 3.783c.947.522 1.622.247 1.874-.876L22.95 3.5c.353-1.428-.516-1.987-1.438-1.64L1.11 9.75c-1.396.545-1.378 1.328-.24 1.679l5.086 1.587L18.34 5.24c.557-.37 1.065-.166.647.204"/></svg>
-      <span>Telegram Channel</span>
+      <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z"/></svg>
+      <span>All Links</span>
     </div>
     <div class="links">
       <a class="link featured" href="https://telegram.me/shiyaaoffic">
@@ -229,29 +208,33 @@
           <span class="sub-label">Join on Telegram</span>
         </span>
       </a>
+      <a class="link" href="https://www.instagram.com/shiyaa_87?igsh=MXVyNzMwaDE0bnhsOA==">
+        <span class="icon" style="background-image:none; background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af,#515bd4);"><svg viewBox="0 0 24 24"><path fill="white" d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2zm0 1.8c-3.14 0-3.5.01-4.73.07-.96.04-1.48.2-1.82.34-.46.18-.78.39-1.13.73-.34.35-.55.67-.73 1.13-.14.34-.3.86-.34 1.82C3.19 8.52 3.18 8.86 3.18 12s.01 3.48.07 4.71c.04.96.2 1.48.34 1.82.18.46.39.78.73 1.13.35.34.67.55 1.13.73.34.14.86.3 1.82.34 1.23.06 1.59.07 4.73.07s3.5-.01 4.73-.07c.96-.04 1.48-.2 1.82-.34.46-.18.78-.39 1.13-.73.34-.35.55-.67.73-1.13.14-.34.3-.86.34-1.82.06-1.23.07-1.57.07-4.71s-.01-3.48-.07-4.71c-.04-.96-.2-1.48-.34-1.82-.18-.46-.39-.78-.73-1.13a2.98 2.98 0 0 0-1.13-.73c-.34-.14-.86-.3-1.82-.34C15.5 4.01 15.14 4 12 4zm0 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 1.8a2.7 2.7 0 1 0 0 5.4 2.7 2.7 0 0 0 0-5.4zm5.72-1.98a1.05 1.05 0 1 1-2.1 0 1.05 1.05 0 0 1 2.1 0z"/></svg></span>
+        <span class="label-group">
+          <span class="main-label">Instagram</span>
+          <span class="sub-label">Follow on Instagram</span>
+        </span>
+      </a>
     </div>
     <footer>gof-dg.github.io</footer>
   </div>
 
   <script>
-    // Water drop effect anywhere on the page
+    // Water drop — throttled, cheap (transform+opacity only)
+    let lastDrop = 0;
     document.addEventListener('pointerdown', function(e) {
-      const drop1 = document.createElement('div');
-      drop1.className = 'water-drop';
-      drop1.style.left = e.clientX + 'px';
-      drop1.style.top = e.clientY + 'px';
-      document.body.appendChild(drop1);
-      setTimeout(() => drop1.remove(), 1800);
-
-      const drop2 = document.createElement('div');
-      drop2.className = 'water-drop ring2';
-      drop2.style.left = e.clientX + 'px';
-      drop2.style.top = e.clientY + 'px';
-      document.body.appendChild(drop2);
-      setTimeout(() => drop2.remove(), 1950);
+      const now = Date.now();
+      if (now - lastDrop < 200) return;
+      lastDrop = now;
+      const drop = document.createElement('div');
+      drop.className = 'water-drop';
+      drop.style.left = e.clientX + 'px';
+      drop.style.top = e.clientY + 'px';
+      document.body.appendChild(drop);
+      setTimeout(() => drop.remove(), 1100);
     });
 
-    // Ripple effect inside each link button
+    // Ripple + press feedback on links
     document.querySelectorAll('a.link').forEach(function(link) {
       link.addEventListener('pointerdown', function(e) {
         const rect = link.getBoundingClientRect();
@@ -262,9 +245,10 @@
         ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
         ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
         link.appendChild(ripple);
-        setTimeout(() => ripple.remove(), 600);
+        setTimeout(() => ripple.remove(), 500);
       });
     });
   </script>
 </body>
 </html>
+
